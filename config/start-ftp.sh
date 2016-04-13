@@ -2,10 +2,7 @@
 
 set -ex
 
-if [ ! $(getent passwd $user) ] ; then
-    adduser -D -s /sbin/nologin -h /ftp-data $FTP_USER
-fi
-
+adduser -D -s /sbin/nologin -h /ftp-data $FTP_USER
 echo "${FTP_USER}:${FTP_PASS}" | chpasswd
 
 chown -R ${FTP_USER}:${FTP_USER} /ftp-data
